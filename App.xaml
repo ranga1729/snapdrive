@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:SnapDrive"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="Styles/CustomScrollBarStyle.xaml"/>
     </Application.Resources>
 </Application>

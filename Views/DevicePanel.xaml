@@ -8,13 +8,23 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Height="Auto" Width="Auto">
     <Grid>
-        <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="20">
-            
-            <StackPanel Height="Auto">
-                
-                <TextBlock Text="My Drives" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+        <Border Grid.Row="1" Background="White" Padding="15,10,5,15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-                <ScrollViewer VerticalScrollBarVisibility="Auto" Height="400" Padding="0,0,10,0">
+                <TextBlock Grid.Row="0" 
+                       Text="My Drives" 
+                       FontWeight="Bold" 
+                       FontSize="16" 
+                       Margin="0,0,0,10"/>
+
+                <ScrollViewer Grid.Row="1" 
+                          VerticalScrollBarVisibility="Auto" 
+                          Padding="0,0,10,0" 
+                          Style="{StaticResource CustomScrollViewer}">
                     <StackPanel>
                         <local:DeviceCard_Syncing />
                         <local:DeviceCard_Synced />
@@ -23,7 +33,7 @@
                         <local:DeviceCard_Syncing />
                     </StackPanel>
                 </ScrollViewer>
-            </StackPanel>
+            </Grid>
         </Border>
     </Grid>
 
