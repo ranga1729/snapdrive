@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="SnapDrive.Views.Sidebar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SnapDrive.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Height="Auto" Width="Auto">
+
+    <Grid Background="#1C2D41">
+        <Grid.Resources>
+            <!-- Button Style for Navigation -->
+            <Style x:Key="NavButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="#B0BEC5"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="20,12"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="Medium"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Margin="8,2">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="Center"
+                                            Margin="{TemplateBinding Padding}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#263238"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Active Navigation Button Style -->
+            <Style x:Key="ActiveNavButtonStyle" TargetType="Button" BasedOn="{StaticResource NavButtonStyle}">
+                <Setter Property="Background" Value="#1976D2"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="20,30,20,40">
+            <TextBlock Text="Snap Sync" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Foreground="White" 
+                   Margin="0,0,0,8"/>
+            <TextBlock Text="Set it once, sync forever" 
+                   FontSize="12" 
+                   Foreground="GhostWhite"/>
+            <Separator Background="#37474F" Margin="0,16,0,0"/>
+        </StackPanel>
+
+        <!-- Navigation Menu -->
+        <StackPanel Grid.Row="1" Margin="12,0">
+            <Button Content="📊 Dashboard" 
+                Style="{StaticResource ActiveNavButtonStyle}"
+                Name="DashboardBtn"/>
+            <Button Content="💾 My Devices" 
+                Style="{StaticResource NavButtonStyle}"
+                Name="MyDevicesBtn"/>
+            <Button Content="🕒 Sync History" 
+                Style="{StaticResource NavButtonStyle}"
+                Name="SyncHistoryBtn"/>
+            <Button Content="⚙️ Settings" 
+                Style="{StaticResource NavButtonStyle}"
+                Name="SettingsBtn"/>
+        </StackPanel>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2" Margin="20" VerticalAlignment="Bottom">
+            <Separator Background="#37474F" Margin="0,0,0,16"/>
+            <TextBlock Text="Version 1.0" 
+                   FontSize="10" 
+                   Foreground="#546E7A" 
+                   HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+
+</UserControl>
